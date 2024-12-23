@@ -93,7 +93,11 @@ export const Calendar = () => {
       const randomGradient = gradients[Math.floor(Math.random() * gradients.length)];
 
       days.push(
-        <div key={day} className="p-2">
+        <div 
+          key={day} 
+          className="p-2 group relative transition-all duration-300 hover:scale-[1.02] hover:shadow-xl rounded-xl"
+        >
+          <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300" />
           <DndContext 
             collisionDetection={closestCenter}
             onDragEnd={handleDragEnd}
@@ -103,7 +107,7 @@ export const Calendar = () => {
               strategy={verticalListSortingStrategy}
             >
               <div 
-                className="h-24 rounded-lg mb-2 overflow-hidden"
+                className="h-24 rounded-lg mb-2 overflow-hidden relative z-10 transition-transform duration-300 group-hover:transform group-hover:translate-y-[-2px]"
                 style={{ background: randomGradient }}
               >
                 {dayTasks.map((task) => (
@@ -112,8 +116,10 @@ export const Calendar = () => {
               </div>
             </SortableContext>
           </DndContext>
-          <div className="text-xs text-gray-400 pl-1">{day}:00</div>
-          <div className="text-xs truncate pl-1">Daily Mix {day}</div>
+          <div className="relative z-10 transition-all duration-300 group-hover:text-primary">
+            <div className="text-xs text-gray-400 pl-1 group-hover:text-primary/70">{day}:00</div>
+            <div className="text-xs truncate pl-1 group-hover:text-primary/90">Daily Mix {day}</div>
+          </div>
         </div>
       );
     }
