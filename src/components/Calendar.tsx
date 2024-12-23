@@ -1,5 +1,10 @@
 import { Card } from "@/components/ui/card";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { DndContext, DragEndEvent, closestCenter } from "@dnd-kit/core";
+import { SortableContext, arrayMove, verticalListSortingStrategy } from "@dnd-kit/sortable";
+import { Task, supabase } from "@/lib/supabase";
+import { SortableTask } from "./SortableTask";
+import { useToast } from "./ui/use-toast";
 
 const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -12,6 +17,56 @@ const gradients = [
 
 export const Calendar = () => {
   const [currentDate] = useState(new Date());
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const { toast } = useToast();
+
+  useEffect(() => {
+    fetchTasks();
+  }, []);
+
+  const fetchTasks = async () => {
+    const { data, error } = await supabase
+      .from('tasks')
+      .select('*')
+      .order('date');
+    
+    if (error) {
+      toast({
+        title: "Error fetching tasks",
+        description: error.message,
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setTasks(data || []);
+  };
+
+  const handleDragEnd = async (event: DragEndEvent) => {
+    const { active, over } = event;
+    
+    if (!over || active.id === over.id) return;
+
+    const oldIndex = tasks.findIndex(task => task.id === active.id);
+    const newIndex = tasks.findIndex(task => task.id === over.id);
+
+    const newTasks = arrayMove(tasks, oldIndex, newIndex);
+    setTasks(newTasks);
+
+    // Update in Supabase
+    const { error } = await supabase
+      .from('tasks')
+      .update({ date: newTasks[newIndex].date })
+      .eq('id', active.id);
+
+    if (error) {
+      toast({
+        title: "Error updating task",
+        description: error.message,
+        variant: "destructive",
+      });
+    }
+  };
 
   const getDaysInMonth = (date: Date) => {
     const year = date.getFullYear();
@@ -33,13 +88,30 @@ export const Calendar = () => {
     }
 
     for (let day = 1; day <= daysInMonth; day++) {
+      const currentDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+      const dayTasks = tasks.filter(task => new Date(task.date).toDateString() === currentDay.toDateString());
       const randomGradient = gradients[Math.floor(Math.random() * gradients.length)];
+
       days.push(
         <div key={day} className="p-2">
-          <div 
-            className="h-24 rounded-lg mb-2 hover:scale-105 transition-transform cursor-pointer"
-            style={{ background: randomGradient }}
-          />
+          <DndContext 
+            collisionDetection={closestCenter}
+            onDragEnd={handleDragEnd}
+          >
+            <SortableContext 
+              items={dayTasks}
+              strategy={verticalListSortingStrategy}
+            >
+              <div 
+                className="h-24 rounded-lg mb-2 overflow-hidden"
+                style={{ background: randomGradient }}
+              >
+                {dayTasks.map((task) => (
+                  <SortableTask key={task.id} task={task} />
+                ))}
+              </div>
+            </SortableContext>
+          </DndContext>
           <div className="text-xs text-gray-400 pl-1">{day}:00</div>
           <div className="text-xs truncate pl-1">Daily Mix {day}</div>
         </div>
