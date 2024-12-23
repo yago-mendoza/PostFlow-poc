@@ -1,6 +1,6 @@
 # PostFlow
 
-![PostFlow Calendar View](https://i.imgur.com/EXAMPLE.png)
+![PostFlow Calendar View](/screenshot.png)
 
 A proof-of-concept content scheduling system implementing advanced drag-and-drop capabilities with time-based granularity and real-time state management.
 
