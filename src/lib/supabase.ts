@@ -9,9 +9,10 @@ if (!supabaseUrl || !supabaseKey) {
 
 export const supabase = createClient(supabaseUrl, supabaseKey);
 
-export type Task = {
+export interface Task {
   id: string;
   title: string;
+  description: string;
   date: string;
-  color: string;
-};
+  platform: "General" | "YouTube" | "TikTok" | "Instagram";
+}
