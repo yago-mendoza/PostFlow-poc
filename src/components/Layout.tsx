@@ -13,7 +13,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
     <div className="min-h-screen bg-background">
       <nav className="bg-card/50 backdrop-blur-sm border-b border-white/10 p-4">
         <div className="container mx-auto flex justify-between items-center">
-          <h1 className="text-xl font-bold text-white">PostFlow</h1>
+          <h1 className="text-4xl font-bold text-white">PostFlow</h1>
           <div className="flex gap-2">
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
               <DialogTrigger asChild>
@@ -65,7 +65,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                 <MessageSquare className="h-5 w-5 text-primary" />
                 <h3 className="font-medium text-white">Assistant</h3>
               </div>
-              <div className="h-[300px] rounded-lg bg-background/50 p-4">
+              <div className="h-[693px] rounded-lg bg-background/50 p-4">
                 <div className="text-sm text-gray-400">
                   How can I help you today?
                 </div>

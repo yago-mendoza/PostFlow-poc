@@ -22,14 +22,14 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "#1A1F2C",
+        background: "#1c1c1c",
         foreground: "#FFFFFF",
         primary: {
-          DEFAULT: "#9b87f5",
+          DEFAULT: "#1DB954",
           foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "#7E69AB",
+          DEFAULT: "#1DB954",
           foreground: "#FFFFFF",
         },
         destructive: {
@@ -37,7 +37,7 @@ export default {
           foreground: "hsl(var(--destructive-foreground))",
         },
         muted: {
-          DEFAULT: "#403E43",
+          DEFAULT: "#1DB954",
           foreground: "#D6BCFA",
         },
         accent: {
@@ -79,5 +79,4 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
 } satisfies Config;
