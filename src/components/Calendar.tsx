@@ -10,10 +10,10 @@ import { DayDetail } from "./DayDetail";
 const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 const gradients = [
-  "linear-gradient(90deg, hsla(277, 75%, 84%, 1) 0%, hsla(297, 50%, 51%, 1) 100%)",
-  "linear-gradient(90deg, hsla(221, 45%, 73%, 1) 0%, hsla(220, 78%, 29%, 1) 100%)",
-  "linear-gradient(90deg, hsla(39, 100%, 77%, 1) 0%, hsla(22, 90%, 57%, 1) 100%)",
-  "linear-gradient(90deg, hsla(46, 73%, 75%, 1) 0%, hsla(176, 73%, 88%, 1) 100%)",
+  "linear-gradient(90deg, #1DB954 0%, #1ed760 100%)", // Verde Spotify
+  "linear-gradient(90deg, #6E59A5 0%, #9B7EDA 100%)", // Púrpura
+  "linear-gradient(90deg, #2C5282 0%, #4299E1 100%)", // Azul
+  "linear-gradient(90deg, #744210 0%, #D69E2E 100%)", // Ámbar
 ];
 
 export const Calendar = () => {
@@ -131,7 +131,7 @@ export const Calendar = () => {
   };
 
   return (
-    <Card className="p-6 bg-background/50 backdrop-blur-sm">
+    <Card className="p-6 bg-background/50 backdrop-blur-sm border-0">
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-white">
           {currentDate.toLocaleString("default", { month: "long", year: "numeric" })}

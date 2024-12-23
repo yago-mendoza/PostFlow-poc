@@ -14,8 +14,8 @@ export const DayDetail = ({ day, month, year, tasks, onClose }: DayDetailProps) 
   
   return (
     <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-card w-full max-w-4xl rounded-xl shadow-lg animate-in zoom-in-90 duration-300">
-        <div className="p-6 border-b border-border/10">
+      <div className="bg-card w-full max-w-4xl rounded-xl shadow-lg animate-in zoom-in-90 duration-300 border-0">
+        <div className="p-6 border-0 border-border/10">
           <div className="flex justify-between items-center">
             <h2 className="text-2xl font-bold">
               {new Date(year, month, day).toLocaleDateString("default", {
