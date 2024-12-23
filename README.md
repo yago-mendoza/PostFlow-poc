@@ -1,24 +1,12 @@
-# PostFlow
-
 ![PostFlow Calendar View](https://github.com/yago-mendoza/mindful-melody-planner/blob/main/screenshot.PNG)
 
-A proof-of-concept content scheduling system implementing advanced drag-and-drop capabilities with time-based granularity and real-time state management.
+# PostFlow
 
-## Core Features
+A proof-of-concept content scheduling system implementing drag and drop capabilities with time-based granularity and real-time state management. Implements hierarchical time-slotting with day/hour granularity, `@dnd-kit` for performant drag-and-drop operations. Built with shadcn/ui primitives for robust UI composition and micro-interactions and motion design for enhanced UX
 
-- **Temporal Task Management**: Implements hierarchical time-slotting with day/hour granularity
-- **Reactive DnD Interface**: Leverages `@dnd-kit` for performant drag-and-drop operations
-- **State Persistence**: Real-time sync with Supabase backend
-- **Compound Components**: Built with shadcn/ui primitives for robust UI composition
-- **Responsive Interactions**: Micro-interactions and motion design for enhanced UX
-
-## Technical Stack
+## Stack
 
 - React 18 with TypeScript
 - Tailwind CSS for utility-first styling
 - Radix UI primitives
 - Supabase for backend services
-
-## Disclaimer
-
-This is an experimental proof-of-concept implementation. The repository may be archived or removed without notice as it serves primarily as a technical demonstration.
