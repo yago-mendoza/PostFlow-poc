@@ -1,6 +1,6 @@
 # PostFlow
 
-![PostFlow Calendar View](/screenshot.png)
+![PostFlow Calendar View](https://github.com/yago-mendoza/mindful-melody-planner/blob/main/screenshot.PNG)
 
 A proof-of-concept content scheduling system implementing advanced drag-and-drop capabilities with time-based granularity and real-time state management.
 
