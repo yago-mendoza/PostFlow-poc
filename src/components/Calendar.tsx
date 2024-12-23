@@ -5,6 +5,7 @@ import { SortableContext, arrayMove, verticalListSortingStrategy } from "@dnd-ki
 import { Task, supabase } from "@/lib/supabase";
 import { SortableTask } from "./SortableTask";
 import { useToast } from "./ui/use-toast";
+import { DayDetail } from "./DayDetail";
 
 const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -18,6 +19,7 @@ const gradients = [
 export const Calendar = () => {
   const [currentDate] = useState(new Date());
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [selectedDay, setSelectedDay] = useState<number | null>(null);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -95,7 +97,8 @@ export const Calendar = () => {
       days.push(
         <div 
           key={day} 
-          className="p-2 group relative transition-all duration-300 hover:scale-[1.02] hover:shadow-xl rounded-xl"
+          className="p-2 group relative transition-all duration-300 hover:scale-[1.02] hover:shadow-xl rounded-xl cursor-pointer"
+          onClick={() => setSelectedDay(day)}
         >
           <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300" />
           <DndContext 
@@ -142,6 +145,20 @@ export const Calendar = () => {
         ))}
         {renderCalendarDays()}
       </div>
+      
+      {selectedDay && (
+        <DayDetail
+          day={selectedDay}
+          month={currentDate.getMonth()}
+          year={currentDate.getFullYear()}
+          tasks={tasks.filter(
+            task => 
+              new Date(task.date).getDate() === selectedDay &&
+              new Date(task.date).getMonth() === currentDate.getMonth()
+          )}
+          onClose={() => setSelectedDay(null)}
+        />
+      )}
     </Card>
   );
 };
