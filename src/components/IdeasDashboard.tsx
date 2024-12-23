@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Sparkles, Trending } from "lucide-react";
+import { Sparkles, TrendingUp } from "lucide-react";
 
 export const IdeasDashboard = () => {
   const trendingIdeas = [
@@ -19,7 +19,7 @@ export const IdeasDashboard = () => {
       <div className="grid grid-cols-2 gap-6">
         <Card className="p-6">
           <div className="flex items-center space-x-2 mb-4">
-            <Trending className="h-5 w-5 text-primary" />
+            <TrendingUp className="h-5 w-5 text-primary" />
             <h3 className="text-lg font-semibold">Trending Topics</h3>
           </div>
           <div className="space-y-4">
