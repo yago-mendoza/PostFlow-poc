@@ -13,7 +13,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
     <div className="min-h-screen bg-background">
       <nav className="bg-card/50 backdrop-blur-sm border-b border-white/10 p-4">
         <div className="container mx-auto flex justify-between items-center">
-          <h1 className="text-xl font-bold text-white">MusicFlow</h1>
+          <h1 className="text-xl font-bold text-white">PostFlow</h1>
           <div className="flex gap-2">
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
               <DialogTrigger asChild>
