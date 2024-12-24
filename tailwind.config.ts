@@ -38,7 +38,7 @@ export default {
         },
         muted: {
           DEFAULT: "#1DB954",
-          foreground: "#D6BCFA",
+          foreground: "#1DB954",
         },
         accent: {
           DEFAULT: "#6E59A5",

@@ -1,0 +1,16 @@
+{
+  "faq": [
+    {
+      "question": "¿Qué es Mindful Melody?",
+      "answer": "Una plataforma para gestionar y planificar tu contenido musical en redes sociales."
+    },
+    {
+      "question": "¿Cómo puedo empezar?",
+      "answer": "Regístrate, conecta tus redes sociales y empieza a planificar tu contenido."
+    },
+    {
+      "question": "¿Qué plataformas soporta?",
+      "answer": "Actualmente soportamos YouTube, TikTok e Instagram, con más plataformas próximamente."
+    }
+  ]
+} 
